@@ -2,7 +2,11 @@
 
 This project is based on [A2Pico](https://github.com/oliverschmidt/a2pico).
 
-With this firmware, the A2Pico emulates a [Mouse Interface](https://mirrors.apple2.org.za/Apple%20II%20Documentation%20Project/Interface%20Cards/Z80%20Cards/PCPI%20Appli-Card/) that allows to connect any USB mouse.
+With this firmware, the A2Pico emulates a [Mouse Interface](https://mirrors.apple2.org.za/Apple%20II%20Documentation%20Project/Interface%20Cards/Digitizers/Apple%20Mouse%20Interface%20Card/) card that allows to connect any USB mouse.
+
+### Note
+
+On the Apple IIgs ROM 3 (in contrast to ROM 00/01), most 16-bit software - incl. GS/OS - does not work with *any* mouse card. This also applies to the A2Pico with this firmware.
 
 ## Usage
 
