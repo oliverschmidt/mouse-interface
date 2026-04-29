@@ -21,12 +21,4 @@ Please ensure the A2Pico `USB Pwr` is set to `on` when using this firmware!
 
 ## Details
 
-The Mouse Interface emulation uses the unmodified 6502 firmware of the original Mouse Interface. Therefore it is supposed to work with every Apple II software the original Mouse Interface works with.
-
-The original Mouse Interface synchronizes its vertical blanking interrupt with the vertical blanking interval of the original Apple II 60Hz video circuit. Please note that the Mouse Interface emulation does *not* do this. What does this mean?
-
-* GUI programs with a mouse cursor like MousePaint, Apple II Desktop or GEOS work as expected.
-* Text programs with a mouse cursor like AppleWorks, ProTERM or Contiki work as expected.
-* Games like Shufflepuck Cafe may suffer from rendering problems.
-
-If the original Apple II video circuit does not run at 60Hz or is bypassed by a VGA or HDMI card, then vertical blanking synchonization will usually not work with the original Mouse Interface either.
+The Mouse Interface emulation uses the unmodified 6502 firmware of the original Mouse Interface card. Therefore it is supposed to work with every Apple II software the original Mouse Interface card works with.
