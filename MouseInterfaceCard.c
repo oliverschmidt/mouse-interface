@@ -185,7 +185,6 @@
 /* VBL Timeouts */
 #define US_60HZ_CYCLES        17030
 #define EU_50HZ_CYCLES        20280
-#define ADJUST_CYCLES         -1       // PIO loop counts from X to 0 inclusive, so remove one
 
 typedef struct
 {
@@ -403,7 +402,7 @@ static void mouseCommandClamp()
 static void mouseCommandTime()
 {
     // bit 0: 1=50Hz, 0=60Hz
-    Mouse.InterVblCycles = ((Mouse.Command & 0x1) ? EU_50HZ_CYCLES : US_60HZ_CYCLES) + ADJUST_CYCLES;
+    Mouse.InterVblCycles = (Mouse.Command & 0x1) ? EU_50HZ_CYCLES : US_60HZ_CYCLES;
 }
 
 static void mouseCommand(void)
@@ -641,7 +640,7 @@ void __time_critical_func(mouseControllerReset)(void)
     }
     Mouse.Clamp.MaxX = 1023;
     Mouse.Clamp.MaxY = 1023;
-    Mouse.InterVblCycles = US_60HZ_CYCLES + ADJUST_CYCLES;
+    Mouse.InterVblCycles = US_60HZ_CYCLES;
 }
 
 void mouseControllerInit(void)
