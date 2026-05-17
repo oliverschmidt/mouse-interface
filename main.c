@@ -40,7 +40,9 @@ void main(void) {
 
     set_sys_clock_khz(200000, false);
 
+#ifdef RASPBERRYPI_PICO
     stdio_init_all();
+#endif
 
     gpio_init(PICO_DEFAULT_LED_PIN);
     gpio_set_dir(PICO_DEFAULT_LED_PIN, GPIO_OUT);
