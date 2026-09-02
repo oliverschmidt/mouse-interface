@@ -28,6 +28,8 @@
 #include <pico/stdlib.h>
 #include <tusb.h>
 
+#include <a2pico.h>
+
 #include "MouseInterfaceCard.h"
 
 // Each HID instance can have multiple reports
@@ -69,7 +71,10 @@ void tuh_hid_mount_cb(uint8_t dev_addr, uint8_t instance, uint8_t const *desc_re
         printf("Error: cannot request to receive report\n");
     }
 
-    gpio_put(PICO_DEFAULT_LED_PIN, true);
+    if (a2pico_led() >= 0)
+    {
+        gpio_put(a2pico_led(), true);
+    }
 }
 
 // Invoked when device with hid interface is un-mounted
@@ -77,7 +82,10 @@ void tuh_hid_umount_cb(uint8_t dev_addr, uint8_t instance)
 {
     printf("HID device address = %d, instance = %d is unmounted\n", dev_addr, instance);
 
-    gpio_put(PICO_DEFAULT_LED_PIN, false);
+    if (a2pico_led() >= 0)
+    {
+        gpio_put(a2pico_led(), false);
+    }
 }
 
 static void process_mouse_report(hid_mouse_report_t const *report)

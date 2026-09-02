@@ -31,6 +31,8 @@ SOFTWARE.
 #include <hardware/structs/busctrl.h>
 #include <tusb.h>
 
+#include <a2pico.h>
+
 #include "board.h"
 #include "MouseInterfaceCard.h"
 
@@ -40,12 +42,12 @@ void main(void) {
 
     set_sys_clock_khz(200000, false);
 
-#ifdef RASPBERRYPI_PICO
-    stdio_init_all();
-#endif
+    stdio_uart_init_full(uart0, PICO_DEFAULT_UART_BAUD_RATE, a2pico_tx(), a2pico_rx());
 
-    gpio_init(PICO_DEFAULT_LED_PIN);
-    gpio_set_dir(PICO_DEFAULT_LED_PIN, GPIO_OUT);
+    if (a2pico_led() >= 0) {
+        gpio_init(a2pico_led());
+        gpio_set_dir(a2pico_led(), GPIO_OUT);
+    }
 
     tusb_init();
 
