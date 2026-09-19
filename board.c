@@ -26,6 +26,7 @@ SOFTWARE.
 */
 
 #include <pico/multicore.h>
+
 #include <a2pico.h>
 
 #include "MouseInterfaceCard.h"
