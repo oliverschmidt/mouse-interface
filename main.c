@@ -26,9 +26,6 @@ SOFTWARE.
 
 #include <stdio.h>
 #include <pico/stdlib.h>
-#include <pico/multicore.h>
-#include <hardware/clocks.h>
-#include <hardware/structs/busctrl.h>
 #include <tusb.h>
 
 #include <a2pico.h>
@@ -37,10 +34,7 @@ SOFTWARE.
 #include "MouseInterfaceCard.h"
 
 void main(void) {    
-    busctrl_hw->priority = BUSCTRL_BUS_PRIORITY_PROC1_BITS;
-    multicore_launch_core1(board);
-
-    set_sys_clock_khz(200000, false);
+    a2pico_init(board);
 
     stdio_uart_init_full(uart0, PICO_DEFAULT_UART_BAUD_RATE, a2pico_tx(), a2pico_rx());
 
